@@ -1,0 +1,34 @@
+body {
+  margin: auto;
+  background-image: url(https://img.freepik.com/free-photo/paper-texture-colorful-abstract-background_53876-98401.jpg?w=1380&t=st=1678497335~exp=1678497935~hmac=ed9ed2ec896b4eaeebc0262cff4284eae470f562b40601f27d722ae1c155e78e);
+  background-size: cover;
+}
+
+.todolist {
+  background-color: #ffefd5;
+  margin: auto;
+  align-items: center;
+  border: solid gray 1px;
+  margin-top: 330px;
+  border-radius: 20px;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  text-align: center;
+}
+.counter {
+  padding-left: 20px;
+}
+.button {
+  border: none;
+  background-color: #ffefd5;
+}
+.input {
+  text-align: center;
+  width: 100%;
+}
+li {
+  padding-left: 50px;
+  list-style: disc;
+}
