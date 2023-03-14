@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { useTodoList } from "./services/useTodoList";
 
 export function TodoList() {
-  const [input, setInput] = useState("");
-  const [list, setList] = useState([]);
+  const todo = useTodoList();
 
   return (
     <div className="todolist">
@@ -10,20 +10,18 @@ export function TodoList() {
       <input
         className="input"
         placeholder="What needs to be done?"
-        value={input}
+        value={todo.task}
         onChange={(ev) => {
-          setInput(ev.target.value);
+          todo.changeTask(ev.target.value);
         }}
         onKeyDown={(ev) => {
           if (ev.key === "Enter") {
-            const newList = [{ task: input, done: false }, ...list];
-            setList(newList);
-            setInput("");
+            todo.addTask();
           }
         }}
       />
       <ul>
-        {list.map((item, index) => {
+        {todo.list.map((item, index) => {
           if (item.done) return null;
           return (
             <li key={index}>
@@ -32,9 +30,7 @@ export function TodoList() {
               <button
                 className="button"
                 onClick={() => {
-                  const newList = [...list];
-                  newList[index].done = true;
-                  setList(newList);
+                  todo.completeTask(index);
                 }}
               >
                 <bold>X</bold>
@@ -44,7 +40,7 @@ export function TodoList() {
         })}
       </ul>
       <div className="counter">
-        {list.filter((items) => !items.done).length} items left
+        {todo.list.filter((items) => !items.done).length} items left
       </div>
     </div>
   );
