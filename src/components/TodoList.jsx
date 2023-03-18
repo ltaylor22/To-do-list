@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTodoList } from "./services/useTodoList";
 
 export function TodoList() {
   const todo = useTodoList();
+
+  useEffect(() => {
+    todo.getTodosFromAPI();
+  }, []);
 
   return (
     <div className="todolist">
@@ -25,7 +29,7 @@ export function TodoList() {
           if (item.done) return null;
           return (
             <li key={index}>
-              {item.task}
+              {item.label}
 
               <button
                 className="button"
